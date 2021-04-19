@@ -78,35 +78,35 @@ router.get("/:tid", async (req, res) => {
 
 // get all tasks for a user or only for one project
 router.get("/", async (req, res) => {
-  const { userId, projectId } = req.query;
-  console.log(userId);
-  console.log(projectId);
-
-  // check is user in query is same as logged in user
-  if (userId && userId != req.user) {
-    return res.status(403).json({ error: "Forbidden, permission denied" });
-  }
-
-  var projects;
-
   try {
+    var tasks;
+    var { userId, projectId } = req.query;
+    console.log("This is the: ", projectId);
+    projectId = parseInt(projectId);
+    console.log("user: ", req.user);
+
+    // check is user in query is same as logged in user
+    if (userId && userId != req.user) {
+      return res.status(403).json({ error: "Forbidden, permission denied" });
+    }
     if (userId) {
-      projects = await pool.query("SELECT * FROM tasks WHERE task_owner = $1", [
-        userId,
-      ]);
+      const tasksRes = await pool.query(
+        "SELECT * FROM tasks WHERE task_owner = $1",
+        [req.user]
+      );
+      tasks = tasksRes;
     } else if (projectId && !userId) {
-      projects = await pool.query(
-        "SELECT * FROM tasks WHERE task_project = $1 AND task_owner =$2",
+      console.log("this one ran");
+      const tasksRes = await pool.query(
+        "SELECT * FROM tasks WHERE task_project = $1 AND task_owner = $2",
         [projectId, req.user]
       );
+      tasks = tasksRes;
+    } else {
+      tasks = { rowCount: 0 };
     }
 
-    // handle no projects found
-    if (projects.rowCount === 0) {
-      return error404(res, "Tasks");
-    }
-
-    res.json(projects.rows);
+    res.json(tasks.rows);
   } catch (error) {
     error500(res, error);
   }

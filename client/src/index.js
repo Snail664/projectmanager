@@ -1,23 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware, compose } from "redux";
-import reduxThunk from "redux-thunk";
-import reducers from "./reducers/index";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { createBreakpoints } from "@chakra-ui/theme-tools";
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-  reducers,
-  composeEnhancers(applyMiddleware(reduxThunk))
-);
+const breakpoints = createBreakpoints({
+  sm: "320px",
+  md: "768px",
+  lg: "960px",
+  xl: "1200px",
+});
+
+const theme = extendTheme({
+  breakpoints,
+});
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
-  </Provider>,
+  <ChakraProvider theme={theme}>
+    <App />
+  </ChakraProvider>,
   document.querySelector("#root")
 );

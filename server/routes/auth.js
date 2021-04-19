@@ -16,7 +16,7 @@ router.post("/register", validateAuthInfo, async (req, res) => {
     ]);
     // if no such user, bcrypt password
     if (user.rows.length !== 0) {
-      return res.status(401).json({ error: "User already exists!" });
+      return res.status(401).send("User already exists!");
     }
 
     // add salt and hash password
@@ -30,7 +30,6 @@ router.post("/register", validateAuthInfo, async (req, res) => {
     );
 
     // generate jwt
-
     const token = jwtGenerator(newUser.rows[0].user_id);
 
     res.json({ token });
@@ -51,7 +50,7 @@ router.post("/login", validateAuthInfo, async (req, res) => {
       email,
     ]);
     if (user.rows.length === 0) {
-      return res.status(401).json({ error: "Email or Password is incorrect" });
+      return res.status(401).send("Email or Password is incorrect");
     }
 
     // check if password in post data as same as db, if not throw error

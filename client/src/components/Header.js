@@ -1,41 +1,60 @@
-import {
-  Box,
-  Button,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
-  Lorem,
-} from "@chakra-ui/react";
+import { Flex, Box, Button, Text } from "@chakra-ui/react";
 import React from "react";
-import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  if (
+    window.location.pathname == "/register" ||
+    window.location.pathname == "/login"
+  ) {
+    return <></>;
+  }
+
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    props.setIsSignedIn(false);
+  };
+
+  const renderButtons = () => {
+    if (props.isSignedIn) {
+      return (
+        <Button colorScheme="facebook" onClick={handleLogOut}>
+          Log out
+        </Button>
+      );
+    } else if (!props.isSignedIn) {
+      return (
+        <>
+          <Link to="/login">
+            <Button>Login</Button>
+          </Link>
+          <Link to="/register">
+            <Button>Sign up</Button>
+          </Link>
+        </>
+      );
+    }
+  };
+
   return (
-    <Box>
-      <Button onClick={onOpen}>Login</Button>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Lorem count={2} />
-          </ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </Box>
+    <Flex
+      p="5"
+      flexDirection="row"
+      justifyContent="space-between"
+      bg="gray.800"
+      color="white"
+    >
+      <Text fontSize="2xl">ProjectManager</Text>
+      <Flex justifyContent="space-around" w="40vw">
+        <Link to="/">
+          <Text fontSize="4xl" colorScheme="facebook"></Text>Dashboard
+        </Link>
+        <Link to="/projects">
+          <Text fontSize="4xl" colorScheme="facebook"></Text>My projects
+        </Link>
+      </Flex>
+      <Box>{renderButtons()}</Box>
+    </Flex>
   );
 };
 

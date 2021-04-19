@@ -114,7 +114,7 @@ router.delete("/:id", async (req, res) => {
     );
 
     // project not found
-    if (updateProject.rows.length === 0) {
+    if (deleteProject.rows.length === 0) {
       return error404(res, "Project");
     }
 
