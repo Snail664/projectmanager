@@ -37,16 +37,13 @@ const Project = (props) => {
 
   const fetchData = async () => {
     // fetch project
-    const projectRes = await axios.get(
-      `http://localhost:5000/projects/${match.params.id}`,
-      {
-        headers: {
-          token: localStorage.getItem("token"),
-        },
-      }
-    );
+    const projectRes = await axios.get(`/projects/${match.params.id}`, {
+      headers: {
+        token: localStorage.getItem("token"),
+      },
+    });
     // fetch tasks associated with this project
-    const tasksRes = await axios.get("http://localhost:5000/tasks/", {
+    const tasksRes = await axios.get("/tasks/", {
       params: {
         projectId: match.params.id,
       },
@@ -77,7 +74,7 @@ const Project = (props) => {
       }
 
       const res = await axios.put(
-        `http://localhost:5000/projects/${match.params.id}`,
+        `/projects/${match.params.id}`,
         {
           title: title,
           description: description,

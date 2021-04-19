@@ -28,7 +28,7 @@ const NewProject = (props) => {
         return;
       }
       const res = await axios.post(
-        "http://localhost:5000/projects",
+        "/projects",
         {
           title: title,
           description: description,

@@ -44,7 +44,7 @@ const Login = (props) => {
     // submit data to backend
 
     try {
-      const res = await axios.post("http://localhost:5000/auth/login", {
+      const res = await axios.post("/auth/login", {
         email,
         password,
       });

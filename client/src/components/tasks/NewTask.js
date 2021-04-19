@@ -29,7 +29,7 @@ const NewTask = (props) => {
         return;
       }
       const res = await axios.post(
-        "http://localhost:5000/tasks",
+        "/tasks",
         {
           title: title,
           description: description,

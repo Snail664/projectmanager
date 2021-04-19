@@ -65,7 +65,7 @@ const Register = (props) => {
     // submit data to backend
 
     try {
-      const res = await axios.post("http://localhost:5000/auth/register", {
+      const res = await axios.post("/auth/register", {
         name,
         email,
         password,
@@ -75,7 +75,7 @@ const Register = (props) => {
         localStorage.setItem("token", res.data.token);
         if (sampleData) {
           const sampleDataRes = await axios.post(
-            "http://localhost:5000/dashboard",
+            "/dashboard",
             {},
             {
               headers: {

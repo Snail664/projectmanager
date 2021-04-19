@@ -11,7 +11,7 @@ const Projects = (props) => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/projects", {
+      const res = await axios.get("/projects", {
         headers: {
           token: localStorage.getItem("token"),
         },

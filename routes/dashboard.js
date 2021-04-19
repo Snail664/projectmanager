@@ -109,6 +109,7 @@ router.post("/", async (req, res) => {
     const urgent1 = new Date(currentDate.getTime() + 6 * 24 * 60 * 60 * 1000);
     const urgent2 = new Date(currentDate.getTime() + 4 * 24 * 60 * 60 * 1000);
     const urgent3 = new Date(currentDate.getTime() + 2 * 24 * 60 * 60 * 1000);
+    const overDue = new Date(currentDate.getTime() - 10 * 24 * 60 * 60 * 1000);
 
     // far away due date for the rest of the tasks
     const farAwayDate = new Date(
@@ -132,10 +133,20 @@ router.post("/", async (req, res) => {
     ('Add submit button shadow', 'Add box shadow to submit button', 'low', $6, 'pending', 'enhancement', $1, $2),
     ('Change background color', 'Pink background not great', 'low', $6, 'pending', 'enhancement', $1, $2),
     ('Screen flicker', 'Small screen flicker when app loads up', 'low', $6, 'pending', 'enhancement', $1, $2),
-    ('Testing', 'Create test suite to find bugs', 'high', $7, 'completed', 'bug', $1, $2) 
+    ('Testing', 'Create test suite to find bugs', 'high', $7, 'completed', 'bug', $1, $2),
+    ('Naming convention', 'Use camel case okay. If not very ugly and confusing', 'low', $8, 'pending', 'documentation', $1, $2)  
     RETURNING *
     `,
-      [project_id, user, urgent1, urgent2, urgent3, farAwayDate, completedDate]
+      [
+        project_id,
+        user,
+        urgent1,
+        urgent2,
+        urgent3,
+        farAwayDate,
+        completedDate,
+        overDue,
+      ]
     );
 
     // return data

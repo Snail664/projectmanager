@@ -13,7 +13,7 @@ const Dashboard = (props) => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/dashboard", {
+      const res = await axios.get("/dashboard", {
         headers: {
           token: localStorage.getItem("token"),
         },

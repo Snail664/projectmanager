@@ -18,14 +18,11 @@ const ProjectListItem = ({ project, setRefetchData }) => {
   const handleDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(
-        `http://localhost:5000/projects/${project.project_id}`,
-        {
-          headers: {
-            token: localStorage.getItem("token"),
-          },
-        }
-      );
+      await axios.delete(`/projects/${project.project_id}`, {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      });
       setRefetchData(true);
     } catch (error) {
       alert(error.message);

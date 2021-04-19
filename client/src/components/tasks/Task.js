@@ -81,7 +81,7 @@ const Task = ({ task, setRefetchData }) => {
       setLoading(true);
       // submit new data
       const res = await axios.put(
-        `http://localhost:5000/tasks/${task.task_id}`,
+        `/tasks/${task.task_id}`,
         {
           title: newTitle ? newTitle : title,
           description: newDescription ? newDescription : description,
@@ -121,14 +121,11 @@ const Task = ({ task, setRefetchData }) => {
   };
 
   const handleDelete = async () => {
-    const res = await axios.delete(
-      `http://localhost:5000/tasks/${task.task_id}`,
-      {
-        headers: {
-          token: localStorage.getItem("token"),
-        },
-      }
-    );
+    const res = await axios.delete(`/tasks/${task.task_id}`, {
+      headers: {
+        token: localStorage.getItem("token"),
+      },
+    });
     setRefetchData(true);
   };
 

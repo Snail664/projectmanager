@@ -15,7 +15,7 @@ const App = () => {
 
     if (token) {
       try {
-        const res = await axios.get("http://localhost:5000/auth/verify", {
+        const res = await axios.get("/auth/verify", {
           headers: {
             token: token,
           },
