@@ -1,4 +1,4 @@
-export default function (dateString) {
+const isDateWithinOneWeek = (dateString) => {
   var currentDate = new Date();
   var date = new Date(dateString);
   if (date.getTime() - currentDate.getTime() < 0) {
@@ -8,4 +8,6 @@ export default function (dateString) {
   } else {
     return false;
   }
-}
+};
+
+export default isDateWithinOneWeek;

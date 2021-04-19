@@ -73,7 +73,7 @@ const Task = ({ task, setRefetchData }) => {
 
   useEffect(() => {
     setAllStyles();
-  }, [dueDate, priority]);
+  }, [dueDate, priority, status, styles]);
 
   const handleSave = async () => {
     try {

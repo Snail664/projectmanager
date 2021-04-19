@@ -7,7 +7,6 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  propNames,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
@@ -68,13 +67,7 @@ const ProjectListItem = ({ project, setRefetchData }) => {
 
         <Box mt="2">{project.project_description}</Box>
 
-        <Box
-          d="flex"
-          flexWrap="wrap"
-          alignItems="baseline"
-          mt="2"
-          alignItems="center"
-        >
+        <Box d="flex" flexWrap="wrap" alignItems="baseline" mt="2">
           <Menu>
             <MenuButton
               colorScheme="facebook"

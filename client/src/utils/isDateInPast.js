@@ -1,4 +1,4 @@
-export default function (dateString) {
+const isDateInPast = (dateString) => {
   var currentDate = new Date();
   var date = new Date(dateString);
 
@@ -7,4 +7,6 @@ export default function (dateString) {
   } else {
     return false;
   }
-}
+};
+
+export default isDateInPast;

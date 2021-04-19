@@ -28,7 +28,9 @@ const NewTask = (props) => {
         setLoading(false);
         return;
       }
-      const res = await axios.post(
+
+      // create task
+      await axios.post(
         "/tasks",
         {
           title: title,

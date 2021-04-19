@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Sector } from "recharts";
 
 const renderActiveShape = (props) => {
@@ -73,8 +73,6 @@ const renderActiveShape = (props) => {
     </g>
   );
 };
-
-const fixedData = [{ name: "bug", value: 10, fill: "#FF0000" }];
 
 export default function TasksByCategory(props) {
   console.log(props);

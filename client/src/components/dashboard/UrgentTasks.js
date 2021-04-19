@@ -10,7 +10,6 @@ import {
   Tag,
 } from "@chakra-ui/react";
 import toReadableDate from "../../utils/toReadableDate";
-import { Link } from "react-router-dom";
 import history from "../../history";
 
 const UrgentTasks = (props) => {
