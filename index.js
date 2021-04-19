@@ -13,7 +13,7 @@ const app = express();
 
 if (process.env.NODE_ENV === "production") {
   // serve client app
-  app.use(express.static("client/build"));
+  app.use(express.static("./specialbuild"));
 }
 
 // middlewares
