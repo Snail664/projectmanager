@@ -59,7 +59,7 @@ router.post("/login", validateAuthInfo, async (req, res) => {
       user.rows[0].user_password
     );
     if (!isPasswordValid) {
-      return res.status(401).json({ error: "Password or email is incorrect" });
+      return res.status(401).send("Email or Password is incorrect");
     }
 
     // if same, give jwt token
