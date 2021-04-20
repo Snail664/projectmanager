@@ -8,6 +8,7 @@ import {
   FormControl,
   FormLabel,
   Text,
+  Image,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import ControlledInput from "./helpers/ControlledInput";
@@ -105,8 +106,21 @@ const Register = (props) => {
       w="100vw"
       h="100vh"
     >
-      <Box bg="whitesmoke" padding="20px" borderRadius="10px" w={{sm: "100%", md: "50%", lg: "50%"}}>
-        <Heading mb="30px" textAlign="center">
+      <Box
+        bg="whitesmoke"
+        padding="20px"
+        borderRadius="10px"
+        w={{ sm: "100%", md: "50%", lg: "50%" }}
+      >
+        <Box d="flex" alignItems="center" justifyContent="center">
+          <Image src="https://img.icons8.com/nolan/64/project.png" alt="Logo" />
+          <Link to="/">
+            <Heading color="orange" _hover={{ color: "blue.200" }}>
+              Project-Manager
+            </Heading>
+          </Link>
+        </Box>
+        <Heading mt="5" mb="30px">
           Register
         </Heading>
         <form onSubmit={handleSubmit}>

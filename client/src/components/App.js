@@ -49,7 +49,10 @@ const App = () => {
               />
             )}
             {!isSignedIn && (
-              <Login isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
+              <Dashboard
+                isSignedIn={isSignedIn}
+                setIsSignedIn={setIsSignedIn}
+              />
             )}
           </Route>
           <Route exact path="/register">

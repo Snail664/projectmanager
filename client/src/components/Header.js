@@ -26,10 +26,7 @@ const Header = (props) => {
       return (
         <>
           <Link to="/login">
-            <Button>Login</Button>
-          </Link>
-          <Link to="/register">
-            <Button>Sign up</Button>
+            <Button colorScheme="orange">Login</Button>
           </Link>
         </>
       );
@@ -45,14 +42,16 @@ const Header = (props) => {
       color="white"
     >
       <Text fontSize="2xl">ProjectManager</Text>
-      <Flex justifyContent="space-around" w="40vw">
-        <Link to="/">
-          <Text fontSize="4xl" colorScheme="facebook"></Text>Dashboard
-        </Link>
-        <Link to="/projects">
-          <Text fontSize="4xl" colorScheme="facebook"></Text>My projects
-        </Link>
-      </Flex>
+      {props.isSignedIn && (
+        <Flex justifyContent="space-around" w="40vw">
+          <Link to="/">
+            <Text fontSize="4xl" colorScheme="facebook"></Text>Dashboard
+          </Link>
+          <Link to="/projects">
+            <Text fontSize="4xl" colorScheme="facebook"></Text>My projects
+          </Link>
+        </Flex>
+      )}
       <Box>{renderButtons()}</Box>
     </Flex>
   );
