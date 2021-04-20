@@ -5,6 +5,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 
 const app = express();
+const root = path.join(__dirname, "client", "build");
 
 /* env variables provided by heroku:
   PORT
@@ -13,7 +14,7 @@ const app = express();
 
 if (process.env.NODE_ENV === "production") {
   // serve client app
-  app.use(express.static("./specialbuild"));
+  app.use(express.static(root));
 }
 
 // middlewares
@@ -27,7 +28,7 @@ app.use("/tasks", require("./routes/tasks"));
 app.use("/dashboard", require("./routes/dashboard"));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build/index.html"));
+  res.sendFile("index.html", { root });
 });
 
 // start server
