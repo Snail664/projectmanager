@@ -105,7 +105,7 @@ const Register = (props) => {
       w="100vw"
       h="100vh"
     >
-      <Box bg="whitesmoke" padding="20px" borderRadius="10px" w="50%">
+      <Box bg="whitesmoke" padding="20px" borderRadius="10px" w={{sm: "100%", md: "50%", lg: "50%"}}>
         <Heading mb="30px" textAlign="center">
           Register
         </Heading>
