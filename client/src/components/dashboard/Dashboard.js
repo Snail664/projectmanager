@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Flex, Heading } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import Header from "../Header";
 import TasksByCategory from "./TasksByCategory";
 import TasksByPriority from "./TasksByPriority";
@@ -76,10 +76,11 @@ const Dashboard = (props) => {
         setIsSignedIn={props.setIsSignedIn}
       />
       <Box bg="blue.100" p="6">
-        <Heading mb="30px" textAlign="center">
-          Dashboard
-        </Heading>
-        <Flex mb="30px" justifyContent="center">
+        <Heading textAlign="center">Dashboard</Heading>
+        <Text textAlign="center" fontSize="sm">
+          Overview of your tasks
+        </Text>
+        <Flex flexWrap="wrap" justifyContent="center">
           <Box m="5">
             <Heading pt="6" mb="5" textAlign="center">
               Tasks by Priority
@@ -97,6 +98,11 @@ const Dashboard = (props) => {
         <Flex justifyContent="center">
           <UrgentTasks data={urgentTasks} />
         </Flex>
+        <Box mt="5" textAlign="center">
+          <Link to="/projects">
+            <Button colorScheme="orange">View Projects</Button>
+          </Link>
+        </Box>
       </Box>
     </Box>
   );

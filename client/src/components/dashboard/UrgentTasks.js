@@ -50,7 +50,7 @@ const UrgentTasks = (props) => {
     });
   return (
     <Table
-      w={{ sm: "100%", md: "100%", lg: "80%", xl: "60%" }}
+      w={{ sm: "100%", md: "100%", lg: "80%", xl: "70%" }}
       variant="striped"
       colorScheme="gray"
     >
