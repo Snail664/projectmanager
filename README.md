@@ -1,17 +1,15 @@
 # projectmanager
 
-Project Management app made using SQL db and React.
+Simple personal project management app.
 
-Tech Stack:
-PostgreSQL
-Node
-React
+# About
+**Built with the PERN stack**
 
-UI:
-Chakra UI
+- PostgreSQL
+- Express
+- React
+- Node
 
-JWT for authentication
-
-NEXT RELEASE
-jwt refresh token (inMemory token with http Only cookie refresh token)
-password reset functionality
+# NEXT RELEASE
+- JWT refresh token (inMemory token with http Only cookie refresh token)
+- Password Reset Functionality
