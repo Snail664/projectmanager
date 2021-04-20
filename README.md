@@ -1,6 +1,6 @@
 # projectmanager
 
-Simple personal project management app.
+Simple personal project management app. Visit at www.pern-project-manager.herokuapp.com
 
 # About
 **Built with the PERN stack**
