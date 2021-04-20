@@ -124,7 +124,7 @@ const Project = (props) => {
   }, [refetchData]);
 
   if (_.isEmpty(project)) {
-    return <Heading>404 - Project not found</Heading>;
+    return <Heading>Loading...</Heading>;
   }
 
   return (
